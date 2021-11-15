@@ -16,20 +16,26 @@ class UserSeeder extends Seeder
     {
         $user = new User();
         $user->name = "admin";
-        $user->email = "admin@conapes.com";
+        $user->email = "admin@udapeapi.com";
         $user->password = bcrypt("987412365");
         $user->save();
 
+        $user->assignRole('Administrador');
+
         $user = new User();
-        $user->name = "funcionario";
-        $user->email = "funcionario@conapes.com";
+        $user->name = "supervisor";
+        $user->email = "supervisor@udapeapi.com";
         $user->password = bcrypt("987412365");
         $user->save();
 
+        $user->assignRole('Supervisor');
+
         $user = new User();
-        $user->name = "especialista";
-        $user->email = "especialista@conapes.com";
+        $user->name = "invitado";
+        $user->email = "invitado@udapeapi.com";
         $user->password = bcrypt("987412365");
         $user->save();
+
+        $user->assignRole('Invitado');
     }
 }
