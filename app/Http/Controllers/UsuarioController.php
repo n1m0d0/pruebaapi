@@ -10,6 +10,11 @@ use Tymon\JWTAuth\Facades\JWTAuth;
 
 class UsuarioController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth.jwt');
+    }
+
     public function usuarios()
     {
         $user = JWTAuth::user();

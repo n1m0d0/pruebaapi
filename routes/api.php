@@ -26,8 +26,14 @@ Route::post('logout', [AuthController::class, "logout"])->middleware('auth.jwt')
 Route::post('me', [AuthController::class, "me"])->middleware('auth.jwt');
 Route::post('refresh', [AuthController::class, "refresh"])->middleware('auth.jwt');
 
-Route::get('usuarios', [UsuarioController::class, "usuarios"])->middleware('auth.jwt');
+Route::get('usuarios', [UsuarioController::class, "usuarios"]);
 
 //Route::get('user', [UserController::class, "index"])->middleware('auth.jwt');
 
 Route::apiResource('user', UserController::class)->middleware('auth.jwt');
+
+Route::any('/', function(){
+    return response()->json([
+        'error' => 'Bad Request'
+    ], 400);
+})->name('error');
