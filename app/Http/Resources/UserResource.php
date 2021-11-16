@@ -19,7 +19,8 @@ class UserResource extends JsonResource
         return [
             'id' => $this->id,
             'nombre' => Str::upper($this->name),
-            'corre' => $this->email
+            'corre' => $this->email,
+            'registrado' => $this->created_at->format('d-m-Y')
         ];
     }
 }

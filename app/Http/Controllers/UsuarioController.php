@@ -15,7 +15,8 @@ class UsuarioController extends Controller
         $user = JWTAuth::user();
         if ($user->hasAnyRole(['Administrador', 'Supervisor', 'Invitado']))
         {
-            $data = DB::connection('mysql2')->table('usuarios')->where('usuario_id', 1)->get();
+            //$data = DB::connection('mysql2')->table('usuarios')->get();
+            $data = DB::connection('mysql2')->select('call obtener(?)',array(1));
             return response()->json([
                 'code' => '10',
                 'message' => 'Peticion Exitosa',
